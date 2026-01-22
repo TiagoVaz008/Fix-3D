@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix 3D - Qualidade, Velocidade e Comprometimento</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin:0; background:#0b0b0b; color:#eee;}
+    header {background:#000; color:white; padding:15px; display:flex; align-items:center; justify-content:space-between;}
+    .brand {display:flex; align-items:center;}
+    header img {height:50px; margin-right:15px;}
+    header h1 {font-size:22px; margin:0; color:#e10600;}
+    nav a {color:#fff; margin-left:15px; text-decoration:none; font-weight:bold;}
+    nav a:hover {color:#e10600;}
+    .hero {background:linear-gradient(135deg,#000,#1a0000); color:white; padding:50px 20px; text-align:center;}
+    .hero h2 {margin-bottom:10px; color:#e10600;}
+    .container {padding:20px; max-width:1100px; margin:auto;}
+    .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;}
+    .card {background:#111; border-radius:8px; box-shadow:0 2px 8px rgba(225,6,0,0.25); padding:15px; text-align:center;}
+    .card img {max-width:100%; height:160px; object-fit:contain; background:#000; border-radius:6px;}
+    .card h3 {margin:10px 0 5px; color:#e10600;}
+    .card p {font-size:14px; color:#ccc;}
+    .card button, .form button {background:#e10600; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;}
+    .card button:hover, .form button:hover {background:#ff2a2a;}
+    .tab {display:none;}
+    .tab.active {display:block;}
+    .form {background:#111; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(225,6,0,0.25); max-width:500px;}
+    .form label {display:block; margin-top:10px; color:#ccc;}
+    .form input, .form select, .form textarea {width:100%; padding:8px; margin-top:5px; border-radius:5px; border:none;}
+    footer {background:#000; color:white; text-align:center; padding:15px; margin-top:30px;}
+  </style>
+</head>
+<body><header>
+  <div class="brand">
+    <img src="https://i.ibb.co/kVZBV957/file-00000000890071f5bc7f9d589af60fdb.png" alt="Fix 3D Logo">
+    <h1>Fix 3D</h1>
+  </div>
+  <nav>
+    <a href="#" onclick="abrirAba('produtos')">Produtos</a>
+    <a href="#" onclick="abrirAba('sobre')">Sobre</a>
+    <a href="#" onclick="abrirAba('contato')">Contato</a>
+    <a href="#" onclick="abrirAba('orcamento')">Orçamento</a>
+  </nav>
+</header><section class="hero">
+  <h2>Fix 3D</h2>
+  <p>Qualidade, velocidade e comprometimento</p>
+</section><div class="container">  <div id="produtos" class="tab active">
+    <h2>Nossos Produtos</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.ibb.co/4Ry5h9zV/images-3.jpg" alt="Barra Roscada">
+        <h3>Barra Roscada</h3>
+        <button onclick="enviarWhats('Barra Roscada')">Solicitar orçamento</button>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/MyBQ0g33/images-2.jpg" alt="Arruela">
+        <h3>Arruela</h3>
+        <button onclick="enviarWhats('Arruela')">Solicitar orçamento</button>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/KxRXMcG1/images.webp" alt="Porca">
+        <h3>Porca</h3>
+        <button onclick="enviarWhats('Porca')">Solicitar orçamento</button>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/cKKb6Cm1/images-1.jpg" alt="Parafuso Sextavado">
+        <h3>Parafuso Sextavado</h3>
+        <button onclick="enviarWhats('Parafuso Sextavado')">Solicitar orçamento</button>
+      </div>
+    </div>
+  </div>  <div id="sobre" class="tab">
+    <h2>Sobre a Fix 3D</h2>
+    <p>A Fix 3D fornece soluções em fixadores industriais com qualidade, velocidade e comprometimento.</p>
+  </div>  <div id="contato" class="tab">
+    <h2>Contato</h2>
+    <button onclick="enviarWhats('Atendimento Fix 3D')">Chamar no WhatsApp</button>
+  </div>  <div id="orcamento" class="tab">
+    <h2>Solicitar Orçamento</h2>
+    <div class="form">
+      <label>Nome</label>
+      <input id="nome" type="text"><label>Empresa</label>
+  <input id="empresa" type="text">
+
+  <label>Produto (escolha)</label>
+  <select id="produtoSelect">
+    <option value="">Selecione</option>
+    <option>Barra Roscada</option>
+    <option>Arruela</option>
+    <option>Porca</option>
+    <option>Parafuso Sextavado</option>
+  </select>
+
+  <label>Produto (ou escreva)</label>
+  <input id="produtoTexto" type="text" placeholder="Ex: Parafuso inox">
+
+  <label>Quantidade</label>
+  <input id="quantidade" type="text">
+
+  <label>Medida</label>
+  <input id="medida" type="text" placeholder="Ex: M8, M10">
+
+  <label>Observação</label>
+  <textarea id="obs"></textarea>
+
+  <button onclick="enviarFormulario()">Enviar orçamento</button>
+</div>
+
+  </div></div><footer>
+  <p>© 2026 Fix 3D - Qualidade, velocidade e comprometimento</p>
+</footer><script>
+  function enviarWhats(produto) {
+    var numero = '554196198093';
+    var mensagem = 'Olá, gostaria de um orçamento para: ' + produto;
+    var url = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(mensagem);
+    window.open(url, '_blank');
+  }
+
+  function abrirAba(id) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function enviarFormulario() {
+    var numero = '554196198093';
+    var nome = document.getElementById('nome').value;
+    var empresa = document.getElementById('empresa').value;
+    var produtoSel = document.getElementById('produtoSelect').value;
+    var produtoTxt = document.getElementById('produtoTexto').value;
+    var produto = produtoSel || produtoTxt;
+    var quantidade = document.getElementById('quantidade').value;
+    var medida = document.getElementById('medida').value;
+    var obs = document.getElementById('obs').value;
+
+    var mensagem = 'Olá, gostaria de um orçamento:%0A' +
+      'Nome: ' + nome + '%0A' +
+      'Empresa: ' + empresa + '%0A' +
+      'Produto: ' + produto + '%0A' +
+      'Quantidade: ' + quantidade + '%0A' +
+      'Medida: ' + medida + '%0A' +
+      'Observação: ' + obs;
+
+    var url = 'https://wa.me/' + numero + '?text=' + mensagem;
+    window.open(url, '_blank');
+  }
+</script></body>
+    </html>
